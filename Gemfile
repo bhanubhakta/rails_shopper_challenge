@@ -22,3 +22,11 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+end
+
+group :test do
+  gem 'shoulda-matchers', require: false
+end
