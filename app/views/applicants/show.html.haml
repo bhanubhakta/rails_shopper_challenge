@@ -1,0 +1,39 @@
+%container
+  .panel.panel-default
+    .panel-heading.h2
+      Yay done! View your information
+    %table.table
+      %tbody
+        %tr
+          %th{:scope => "row"} 1
+          %td First Name
+          %td= @applicant.first_name
+        %tr
+          %th{:scope => "row"} 2
+          %td Last Name
+          %td= @applicant.last_name
+        %tr
+          %th{:scope => "row"} 3
+          %td Region
+          %td= @applicant.region
+        %tr
+          %th{:scope => "row"} 3
+          %td Phone
+          %td= @applicant.phone
+        %tr
+          %th{:scope => "row"} 3
+          %td Email
+          %td= @applicant.email
+        %tr
+          %th{:scope => "row"} 3
+          %td Phone Type
+          %td= @applicant.phone_type
+
+        %tr
+          %th{:scope => "row"} 3
+          %td Workflow State
+          %td= @applicant.workflow_state
+
+  %hr
+  %p
+    = link_to "Edit", edit_applicant_path(current_applicant), class: 'btn btn-success'

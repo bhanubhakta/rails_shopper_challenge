@@ -16,4 +16,12 @@ class Applicant < ActiveRecord::Base
   def initialize_workflow_state
     self.workflow_state = WORKFLOW_STATES[0] unless self.workflow_state
   end
+
+  def update_state
+    current_state_index = WORKFLOW_STATES.index(self.workflow_state)
+    if current_state_index < WORKFLOW_STATES.length - 1
+      self.workflow_state = WORKFLOW_STATES[current_state_index + 1]
+    end
+    self.save
+  end
 end

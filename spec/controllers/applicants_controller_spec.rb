@@ -35,4 +35,19 @@ describe ApplicantsController do
       end
     end
   end
+
+  context 'post authorize' do
+    let(:applicant) { Applicant.create(first_name: "Bhanu", last_name: "Sigdel", email: "bsbhanu169@gmail.com", phone: "9849021744", phone_type: "Iphone", region: "CA Bay Area") }
+
+    subject { patch :authorize, id: applicant.id }
+
+    before {
+      session[:email] = applicant.email
+      subject
+    }
+
+    it 'authorizes the applicant' do
+      expect(applicant.reload.workflow_state).to eq('quiz_started')
+    end
+  end
 end

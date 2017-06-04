@@ -19,7 +19,21 @@ class ApplicantsController < ApplicationController
   end
 
   def show
-    # your code here
+    @applicant = current_applicant
+    if @applicant.nil?
+      flash[:alert] = "Please login to view your information."
+      redirect_to root_path
+    end
+  end
+
+  def authorize
+    applicant = current_applicant
+    applicant.update_state
+    @full_name = "#{applicant.first_name} #{applicant.last_name}"
+    redirect_to confirm_applicants_path
+  end
+
+  def confirm
   end
 
   private
