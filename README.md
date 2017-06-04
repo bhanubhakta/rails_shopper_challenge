@@ -95,3 +95,8 @@ This should be structured like:
 - We will only be testing date ranges up to (and including) 2014-12-31, so any applicants you create (assuming your system clock is accurate to a year) will not be included.
 
 We're particular interested in the speed of your implementation, so please consider performance as you work through this part of the challenge.
+
+
+==============================
+Application Setup Process:
+
