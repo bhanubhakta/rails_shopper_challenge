@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post "applicants/login" => "sessions#create"
   post "applicants/logout" => "sessions#logout", as: :logout
 
-  resources :applicants, only: [:create, :update, :edit, :show] do
+  resources :applicants, only: [:new, :create, :update, :edit, :show] do
     collection do
       get :background
       post :authorize, path: "authorize"
