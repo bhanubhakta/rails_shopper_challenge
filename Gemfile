@@ -13,6 +13,7 @@ gem 'rails-assets-nvd3'
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'whenever', :require => false
+gem 'faker'
 
 group :development do
   gem 'better_errors'

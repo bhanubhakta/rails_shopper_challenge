@@ -3,6 +3,9 @@ class FunnelsController < ApplicationController
     start_date = params[:start_date] || Date.today.to_s
     end_date = params[:end_date] || Date.today.to_s
 
+    # start_date = params[:start_date] || "2014-12-01"
+    # end_date = params[:end_date] || "2017-07-31"
+
     if Date.parse(start_date) > Date.parse(end_date)
       render json: {code: 422, message: "start_date cannot be greater than end_date"}, :status => 422 and return
     end
