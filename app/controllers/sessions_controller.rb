@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     if applicant && applicant.phone == phone
       flash[:notice] = "Login successful."
       log_in applicant
-      redirect_to edit_applicant_path(applicant)
+      redirect_to applicant_path(applicant)
     else
       flash[:alert] = "Incorrect email or phone."
       redirect_to root_path

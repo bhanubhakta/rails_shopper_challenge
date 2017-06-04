@@ -18,6 +18,10 @@ class ApplicantsController < ApplicationController
     # your code here
   end
 
+  def edit
+    @applicant = Applicant.find(params[:id])
+  end
+
   def show
     @applicant = current_applicant
     if @applicant.nil?
