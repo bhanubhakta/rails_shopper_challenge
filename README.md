@@ -105,3 +105,5 @@ Application Setup Process
 5. Go to localhost:3000
 
 Enjoy
+
+Taking break
