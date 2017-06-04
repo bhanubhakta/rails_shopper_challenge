@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604192424) do
+ActiveRecord::Schema.define(version: 20170604211451) do
 
   create_table "applicants", force: :cascade do |t|
     t.string   "first_name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20170604192424) do
     t.datetime "updated_at",     null: false
   end
 
+  add_index "applicants", ["updated_at"], name: "index_applicants_on_updated_at"
+
   create_table "funnel_batches", force: :cascade do |t|
     t.date    "start_date"
     t.date    "end_date"
@@ -40,5 +42,8 @@ ActiveRecord::Schema.define(version: 20170604192424) do
     t.integer "hired"
     t.integer "rejected"
   end
+
+  add_index "funnel_batches", ["end_date"], name: "index_funnel_batches_on_end_date"
+  add_index "funnel_batches", ["start_date"], name: "index_funnel_batches_on_start_date"
 
 end
