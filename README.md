@@ -99,9 +99,10 @@ We're particular interested in the speed of your implementation, so please consi
 Application Setup Process
 =========================
 1. Clone the repository
-2. Run bundle
-3. Run bundle update if bundle doesn't work
-4. Run bundle exec rake db:migrate
+2. Run `bundle`
+3. Run `bundle update` if bundle doesn't work
+4. Run `bundle exec rake db:migrate`
+6. Run `bundle exec rake funnel:summarize_all
 5. Run command rails s
 6. Go to localhost:3000
 7. whenever --update-crontab --set environment='development' for development machine
