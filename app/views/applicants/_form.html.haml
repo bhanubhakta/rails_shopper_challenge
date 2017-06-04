@@ -1,0 +1,32 @@
+
+- if @errors
+  %p.alert-danger
+    = @errors
+%fieldset
+  .form_group
+    = form_for @applicant do |f|
+      %label
+        First name
+      %p
+        = f.text_field :first_name, class: 'form-control', required: true, placeholder: "First name"
+      %label
+        Last name
+      %p
+        = f.text_field :last_name, placeholder: "Last name", class: 'form-control', required: true
+      %label
+        Email
+      %p
+        = f.text_field :email, placeholder: "Email", class: 'form-control', type: "email", required: true
+      %label
+        Phone number
+      %p
+        = f.text_field :phone, placeholder: "Phone number", class: 'form-control'
+      %label
+        Phone type
+      %p
+        = f.select :phone_type, options_for_select(Applicant::PHONE_TYPES, @applicant.phone_type), {include_blank: true}, selected: Applicant::PHONE_TYPES[0], class: 'form-control'
+      %label
+        Region
+      %p
+        = f.select :region, options_for_select(Applicant::REGIONS, @applicant.region), {include_blank: true}, class: 'form-control'
+      = f.submit "Submit application", class: 'btn btn-large btn-success'
