@@ -23,7 +23,10 @@ module ApplicantChallenge
     # Autoload files under lib directory.
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
-
+    config.after_initialize do
+      Rails.application.load_tasks
+      Rake::Task['funnel:summarize_all'].invoke unless Rails.env == 'test'
+    end
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
   end
