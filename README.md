@@ -106,6 +106,7 @@ Application Setup Process
 6. Go to localhost:3000
 7. whenever --update-crontab --set environment='development' for development machine
 8. whenever --update-crontab for production environment.
+9. Run tests `bundle exec rspec spec`
 
 Design Decision
 ===============
