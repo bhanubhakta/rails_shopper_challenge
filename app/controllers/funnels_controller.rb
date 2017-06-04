@@ -1,7 +1,14 @@
 class FunnelsController < ApplicationController
   def index
-    @funnel = {} # your code goes here
+    start_date = params[:start_date] || Date.today.to_s
+    end_date = params[:end_date] || Date.today.to_s
 
+    if Date.parse(start_date) > Date.parse(end_date)
+      render json: {status: "error", code: 402, message: "start_date cannot be greater than end_date"} and return
+    end
+    
+    @funnel = Funnel.analytics(start_date, end_date)
+    
     respond_to do |format|
       format.html { @chart_funnel = formatted_funnel }
       format.json { render json: @funnel }
