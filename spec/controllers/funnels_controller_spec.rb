@@ -17,6 +17,8 @@ describe FunnelsController, :type => :controller do
       Applicant.create!(first_name: "Bibas", last_name: "Singh", email: "bsbha@gmail.com", phone: 641-451-3403, phone_type: Applicant::PHONE_TYPES[2], workflow_state: Applicant::WORKFLOW_STATES[3], region: Applicant::REGIONS[2], updated_at: DateTime.new(2015, 12, 15))
 
       Applicant.create!(first_name: "Pukar", last_name: "Mainali", email: "bsbh@gmail.com", phone: 641-451-3404, phone_type: Applicant::PHONE_TYPES[3], workflow_state: Applicant::WORKFLOW_STATES[3], region: Applicant::REGIONS[2], updated_at: DateTime.new(2015, 12, 20))
+
+      Rake::Task['funnel:summarize_all'].invoke
     end
 
     context 'there exists records in the provided date range' do
@@ -32,6 +34,24 @@ describe FunnelsController, :type => :controller do
       
       it "should respond with http success" do
         expect(response.status).to be 200
+      end
+    end
+
+    context 'start date is greater than end_date' do
+      let(:start_date) { "2015-12-28" }
+      let(:end_date) { "2015-12-01" }
+
+      before do
+        subject
+      end
+
+      it 'should respond with http success' do
+        expect(response.status).to be 422
+      end
+
+      it 'returns proper error message' do
+        result = JSON.parse response.body
+        expect(result['message']).to eq("start_date cannot be greater than end_date")
       end
     end
   end

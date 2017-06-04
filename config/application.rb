@@ -25,6 +25,12 @@ module ApplicantChallenge
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
     config.after_initialize do
       Rails.application.load_tasks
+      
+      # This is not a good way.
+      # I am keeping here because we already have data in
+      # db/development.sqlite3
+      # It will be better to run this task from outside
+      # from console one time.
       Rake::Task['funnel:summarize_all'].invoke unless Rails.env == 'test'
     end
     # Do not swallow errors in after_commit/after_rollback callbacks.
