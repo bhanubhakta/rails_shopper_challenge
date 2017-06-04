@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108011628) do
+ActiveRecord::Schema.define(version: 20170604192424) do
 
   create_table "applicants", force: :cascade do |t|
     t.string   "first_name"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 20150108011628) do
     t.string   "workflow_state"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "funnel_batches", force: :cascade do |t|
+    t.date    "start_date"
+    t.date    "end_date"
+    t.string  "range"
+    t.integer "applied"
+    t.integer "quiz_started"
+    t.integer "quiz_completed"
+    t.integer "onboarding_requested"
+    t.integer "onboarding_completed"
+    t.integer "hired"
+    t.integer "rejected"
   end
 
 end
