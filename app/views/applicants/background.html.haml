@@ -1,0 +1,10 @@
+%container
+  .jumbotron
+    %h2
+      Almost Done
+      %hr
+      %p
+        Instacart checks background of all the shopper applicants. Make sure you understand this condition. Please accept if you agree.
+      %hr
+      = form_tag authorize_applicants_path do
+        = button_tag "Accept", class: 'btn btn-lg btn-success'
