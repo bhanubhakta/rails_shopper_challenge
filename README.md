@@ -99,11 +99,12 @@ We're particular interested in the speed of your implementation, so please consi
 Application Setup Process
 =========================
 1. Clone the repository
-2. run bundle
-3. run bundle exec rake db:migrate
-4. Run command rails s
-5. Go to localhost:3000
+2. Run bundle
+3. Run bundle update if bundle doesn't work
+4. Run bundle exec rake db:migrate
+5. Run command rails s
+6. Go to localhost:3000
 
 Enjoy
 
-Taking break
+Resuming work
