@@ -1,0 +1,12 @@
+%body
+  .container
+    .jumbotron
+      %h1
+        .display-3
+          Welcome to Instacart.
+          Earn money shopping and delivering groceries, giving customers more time to do what they love.
+      %p
+        - if logged_in?
+          = link_to "View Application", edit_applicant_path(current_applicant), class: 'btn btn-lg btn-success'
+        - else
+          = link_to "Apply now", "#", class: 'btn btn-lg btn-success align-middle pull-right'
