@@ -12,8 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'rails-assets-nvd3'
 gem 'bootstrap-sass'
 gem 'haml-rails'
-gem 'pry'
-gem 'pry-nav'
+gem 'whenever', :require => false
 
 group :development do
   gem 'better_errors'
