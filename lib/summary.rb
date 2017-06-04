@@ -9,7 +9,6 @@ class Summary
     # Query for grouping by week.
     # We can make more efficient by storing workflow_state
     # as integer rather than string.
-    
     start_date = options[:start_date]
     all_records = options[:all_records] || false
     query_middle = ""
