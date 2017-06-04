@@ -50,4 +50,14 @@ describe ApplicantsController do
       expect(applicant.reload.workflow_state).to eq('quiz_started')
     end
   end
+
+  context 'GET edit' do
+    let(:applicant) { Applicant.create(first_name: "Bhanu", last_name: "Sigdel", email: "bsbhanu169@gmail.com", phone: "9849021744", phone_type: "Iphone", region: "CA Bay Area") }
+    subject { get :edit, id: applicant.id }
+    before { subject }
+
+    it 'renders edit template' do
+      expect(response).to render_template :edit
+    end
+  end
 end
