@@ -60,4 +60,25 @@ describe ApplicantsController do
       expect(response).to render_template :edit
     end
   end
+
+  context 'PATCH update' do
+    let(:applicant) { Applicant.create(first_name: "Bhanu", last_name: "Sigdel", email: "bsbhanu169@gmail.com", phone: "9849021744", phone_type: "Iphone", region: "CA Bay Area") }
+    let(:params) do
+      {
+        first_name: "Pradeep",
+        last_name: "Bogati"
+      }
+    end
+
+    subject { patch :update, id: applicant.id, applicant: params }
+
+    before {
+      session[:email] = applicant.email
+      subject
+    }
+
+    it 'updates the field' do
+      expect(applicant.reload.first_name).to eq(params[:first_name])
+    end
+  end
 end

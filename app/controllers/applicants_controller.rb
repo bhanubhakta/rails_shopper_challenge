@@ -15,7 +15,16 @@ class ApplicantsController < ApplicationController
   end
 
   def update
-    # your code here
+    @applicant = current_applicant
+
+    if @applicant.update(permitted_values)
+      log_in @applicant
+      flash[:notice] = "Information updated successfully."
+      redirect_to root_path
+    else
+      @errors = parse_error(@applicant.errors)
+      render edit_applicant_path(current_applicant)
+    end
   end
 
   def edit
