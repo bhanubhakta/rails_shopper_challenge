@@ -104,7 +104,17 @@ Application Setup Process
 4. Run bundle exec rake db:migrate
 5. Run command rails s
 6. Go to localhost:3000
+7. whenever --update-crontab --set environment='development' for development machine
+8. whenever --update-crontab for production environment.
+
+Design Decision
+===============
+
+For faster analytics, I have made a seperate table
+funnel_batches which keeps the summary of what the analytics need. For older records there is a rake task
+``funnel:summarize_all`` which will keep summary of data in the applicants till now.
+
+There is a cron job that runs every day one time that will add the summary or create new one if not exists so that the summary table is up to date till one day before. However this approach has one shortcomming as it will not be realtime. We can make real time by updating the summary table on every state change which can be called asynchronously.
+
 
 Enjoy
-
-Resuming work
