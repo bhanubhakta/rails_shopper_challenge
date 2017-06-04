@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   get "applicants/login" => "sessions#new", as: :login
   post "applicants/login" => "sessions#create"
   post "applicants/logout" => "sessions#logout", as: :logout
-  resources :applicants, only: [:create, :update, :show, :new]
+
+  resources :applicants, only: [:create, :update, :edit, :show] do
+    collection do
+      get :background
+      post :authorize, path: "authorize"
+      get :confirm
+    end
+  end
+  
   resources :funnels, only: [:index]
 end

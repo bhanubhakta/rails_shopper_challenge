@@ -10,4 +10,10 @@ class Applicant < ActiveRecord::Base
   validates :phone_type, presence: true
   validates :workflow_state, presence: true
   validates :region, presence: true
+
+  before_validation :initialize_workflow_state, on: :create
+
+  def initialize_workflow_state
+    self.workflow_state = WORKFLOW_STATES[0] unless self.workflow_state
+  end
 end
